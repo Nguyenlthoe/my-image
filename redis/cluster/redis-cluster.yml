@@ -1,0 +1,33 @@
+services:
+  redis-service1:
+    image: nguyenlthoe/redis-cluter:1.0.2
+    container_name: redis-server-1
+    ports:
+      - 7001:7000
+    networks:
+      redis-cluster:
+        ipv4_address: 172.25.0.2
+  redis-service2:
+    image: nguyenlthoe/redis-cluter:1.0.2
+    container_name: redis-server-2
+    ports:
+      - 7002:7000
+    networks:
+      redis-cluster:
+        ipv4_address: 172.25.0.3
+  redis-service3:
+    image: nguyenlthoe/redis-cluter:1.0.2
+    container_name: redis-server-3
+    ports:
+      - 7003:7000
+    networks:
+      redis-cluster:
+        ipv4_address: 172.25.0.4
+networks:
+  redis-cluster:
+      name: custom_network
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+          - subnet: 172.25.0.0/16

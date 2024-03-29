@@ -28,11 +28,13 @@ ENV PATH $PATH:$JAVA_HOME/bin
 WORKDIR /opt
 RUN wget https://download.redis.io/redis-stable.tar.gz && tar -xzvf redis-stable.tar.gz
 
+ADD redis.conf /opt/redis-stable/redis.conf
 RUN cd ./redis-stable && make BUILD_TLS=no
 RUN cd ./redis-stable && make install
 RUN echo vm.overcommit_memory = 1 >> /etc/sysctl.conf
+RUN sysctl vm.overcommit_memory=1
 
-EXPOSE 6379
+EXPOSE 7000
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh

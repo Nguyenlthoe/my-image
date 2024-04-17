@@ -1,2 +1,2 @@
-1. Khởi tạo cluster
+1. Khởi tạo cluster (chạy bash trên container)
 redis-cli -a "package1107" --cluster create 172.25.0.2:7000 172.25.0.3:7000 172.25.0.4:7000 --cluster-replicas 0

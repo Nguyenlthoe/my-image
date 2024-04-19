@@ -1,0 +1,29 @@
+services:
+  mongo-service1:
+    image: nguyenlthoe/mongodb-server:1.0.0
+    container_name: mongodb-server-r1
+    ports:
+      - 27017:27017
+    networks:
+      mongo-cluster:
+        ipv4_address: 172.25.0.5
+  mongo-service2:
+    image: nguyenlthoe/mongodb-server:1.0.0
+    container_name: mongodb-server-r2
+    ports:
+      - 27018:27017
+    networks:
+      mongo-cluster:
+        ipv4_address: 172.25.0.6
+  mongo-service3:
+    image: nguyenlthoe/mongodb-server:1.0.0
+    container_name: mongodb-server-r3
+    ports:
+      - 27019:27017
+    networks:
+      mongo-cluster:
+        ipv4_address: 172.25.0.7
+networks:
+  mongo-cluster:
+      external:
+        name: custom_network

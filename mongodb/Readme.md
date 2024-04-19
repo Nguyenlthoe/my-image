@@ -30,3 +30,7 @@
     ```
     mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --fork --auth
     ```
+- Login as admin in mongosh:
+    ```
+    db.auth("myUserAdmin", passwordPrompt())
+    ```

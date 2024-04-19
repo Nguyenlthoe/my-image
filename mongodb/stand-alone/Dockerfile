@@ -27,9 +27,14 @@ ENV PATH $PATH:$JAVA_HOME/bin
 
 WORKDIR /opt
 
-RUN wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu2004-7.0.8.tgz && tar -xvzf mongodb-linux-x86_64-ubuntu2004-7.0.8.tgz
+RUN wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu2004-7.0.8.tgz && tar -xvzf mongodb-linux-x86_64-ubuntu2004-7.0.8.tgz && rm  mongodb-linux-x86_64-ubuntu2004-7.0.8.tgz
+
 RUN mv mongodb-linux-x86_64-ubuntu2004-7.0.8 mongodb-server
 RUN ln -s  /opt/mongodb-server/bin/* /usr/local/bin/
+
+RUN wget https://downloads.mongodb.com/compass/mongodb-mongosh_2.2.4_amd64.deb
+RUN apt install ./mongodb-mongosh_2.2.4_amd64.deb
+RUN rm mongodb-mongosh_2.2.4_amd64.deb
 
 RUN mkdir -p /var/lib/mongo
 RUN mkdir -p /var/log/mongodb

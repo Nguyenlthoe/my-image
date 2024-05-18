@@ -1,8 +1,8 @@
 services:
   mongo-service1:
     image: nguyenlthoe/mongodb-server:1.0.0
-    container_name: mongodb-server-r1-1
-    hostname: mongodb-server-r1-1
+    container_name: mongodb-server-cf-1
+    hostname: mongodb-server-cf-1
     ports:
       - 27017:27017
     volumes:
@@ -13,8 +13,8 @@ services:
         ipv4_address: 172.25.0.5
   mongo-service2:
     image: nguyenlthoe/mongodb-server:1.0.0
-    container_name: mongodb-server-r1-2
-    hostname: mongodb-server-r1-2
+    container_name: mongodb-server-cf-2
+    hostname: mongodb-server-cf-2
     volumes:
       - ./mongod-2.conf:/opt/mongod.conf
       - ./mongo-key:/opt/mongo-key
@@ -25,8 +25,8 @@ services:
         ipv4_address: 172.25.0.6
   mongo-service3:
     image: nguyenlthoe/mongodb-server:1.0.0
-    container_name: mongodb-server-r1-3
-    hostname: mongodb-server-r1-3
+    container_name: mongodb-server-cf-3
+    hostname: mongodb-server-cf-3
     volumes:
       - ./mongod-3.conf:/opt/mongod.conf
       - ./mongo-key:/opt/mongo-key

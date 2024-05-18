@@ -13,11 +13,12 @@
     ```
     db.createUser(
         {
-            user: "myUserAdmin",
+            user: "admin",
             pwd: passwordPrompt(), // or cleartext password
             roles: [
                 { role: "userAdminAnyDatabase", db: "admin" },
-                { role: "readWriteAnyDatabase", db: "admin" }
+                { role: "readWriteAnyDatabase", db: "admin" },
+                { role: "root", db: "admin"}
             ]
         }
     )
@@ -32,5 +33,5 @@
     ```
 - Login as admin in mongosh:
     ```
-    db.auth("myUserAdmin", passwordPrompt())
+    db.auth("admin", passwordPrompt())
     ```

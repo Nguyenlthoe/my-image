@@ -1,0 +1,77 @@
+services:
+  mongo-service1:
+    image: nguyenlthoe/mongodb-server:1.0.0
+    container_name: mongodb-server-r1-1
+    hostname: mongodb-server-r1-1
+    ports:
+      - 27020:27017
+    volumes:
+      - ./mongod-1.conf:/opt/mongod.conf
+      - ./mongo-key:/opt/mongo-key
+    networks:
+      mongo-cluster:
+        ipv4_address: 172.25.0.8
+  mongo-service2:
+    image: nguyenlthoe/mongodb-server:1.0.0
+    container_name: mongodb-server-r1-2
+    hostname: mongodb-server-r1-2
+    volumes:
+      - ./mongod-2.conf:/opt/mongod.conf
+      - ./mongo-key:/opt/mongo-key
+    ports:
+      - 27021:27017
+    networks:
+      mongo-cluster:
+        ipv4_address: 172.25.0.9
+  mongo-service3:
+    image: nguyenlthoe/mongodb-server:1.0.0
+    container_name: mongodb-server-r1-3
+    hostname: mongodb-server-r1-3
+    volumes:
+      - ./mongod-3.conf:/opt/mongod.conf
+      - ./mongo-key:/opt/mongo-key
+    ports:
+      - 27022:27017
+    networks:
+      mongo-cluster:
+        ipv4_address: 172.25.0.10
+  mongo-service4:
+    image: nguyenlthoe/mongodb-server:1.0.0
+    container_name: mongodb-server-r2-1
+    hostname: mongodb-server-r2-1
+    volumes:
+      - ./mongod-4.conf:/opt/mongod.conf
+      - ./mongo-key:/opt/mongo-key
+    ports:
+      - 27023:27017
+    networks:
+      mongo-cluster:
+        ipv4_address: 172.25.0.11
+  mongo-service5:
+    image: nguyenlthoe/mongodb-server:1.0.0
+    container_name: mongodb-server-r2-2
+    hostname: mongodb-server-r2-2
+    volumes:
+      - ./mongod-5.conf:/opt/mongod.conf
+      - ./mongo-key:/opt/mongo-key
+    ports:
+      - 27024:27017
+    networks:
+      mongo-cluster:
+        ipv4_address: 172.25.0.12
+  mongo-service6:
+    image: nguyenlthoe/mongodb-server:1.0.0
+    container_name: mongodb-server-r2-3
+    hostname: mongodb-server-r2-3
+    volumes:
+      - ./mongod-6.conf:/opt/mongod.conf
+      - ./mongo-key:/opt/mongo-key
+    ports:
+      - 27025:27017
+    networks:
+      mongo-cluster:
+        ipv4_address: 172.25.0.13
+networks:
+  mongo-cluster:
+      external:
+        name: custom_network
